@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+    zookeeper:
+      image: zookeeper
+      networks: 
+        - backend
+        
+    kafka:
+      image: ches/kafka
+      ports:
+        - "9092:9092"
+      networks:
+        - backend
+      environment:
+       ZOOKEEPER_IP: zookeeper
+ 
+networks:
+    backend:
